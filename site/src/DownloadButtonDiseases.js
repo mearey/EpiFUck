@@ -134,7 +134,7 @@ export default function DownloadButtonDiseases() {
       <Button style={{ width:'500px', fontSize:'25px', position:'relative', bottom:'-120px' }} id="downloadBtn" onClick={downloadTxtFile} value={result} variant="contained">Download</Button>
       {downloaded === true
         ? <>
-           <div name='success message' style={{ position:'relative', bottom: '-200px', color: 'green', fontSize: '20px', fontWeight: 'bold' }}>
+           <div name='success message' style={{ position:'relative', bottom: '-140px', color: 'green', fontSize: '20px', fontWeight: 'bold' }}>
             Successfully Downloaded File
           </div>
         </>
