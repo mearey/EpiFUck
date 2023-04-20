@@ -1,4 +1,5 @@
 {
+  "license": "UNLICENSED",
   "devDependencies": {
     "cypress": "^12.10.0"
   }
