@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import DownloadButtonDiseases from './DownloadButtonDiseases';
 import DownloadButtonLocation from './DownloadButtonLocation';
 import Charts from "./Charts";
+import image from './image.png'
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -50,24 +51,27 @@ function TabPanel(props) {
     };
   
     return (
-      <Box sx={{ width: '100%' }}>
-        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+      <Box sx={{ width: '100%'}}>
+        <Box sx={{ borderBottom: 1, borderColor: 'divider', backgroundColor: 'rgb(235,237,238)'}}>
           <Tabs name='tabs' value={value} onChange={switchTab} aria-label="basic tabs example">
             <Tab label="Download Datasets" {...a11yProps(0)} />
             <Tab name='tabsCharts' label="View Charts" {...a11yProps(1)} />
             <Tab label="Map" {...a11yProps(2)} />
           </Tabs>
         </Box>
-        <TabPanel value={value} index={0} sx={{ width: '100%' }}>
-          <Box >
-            <Card variant="outlined" sx={{ width: '300px', height: '100px', margin: '10px'}}>
+        <TabPanel value={value} index={0} sx={{ width: '100%'}}>
+           <br/>
+          <Box>
+            <Card variant="outlined" sx={{width: '800px', height: '350px', margin: '10px', position:'relative', right:'-400px', backgroundColor: 'rgb(235,237,238)', borderRadius:'50px'}}>
               <DownloadButtonDiseases></DownloadButtonDiseases>
             </Card>
           </Box>
-          <Card variant="outlined" sx={{ width: '300px', height: '100px', margin: '10px'}}>
+          <br/>
+          <Card variant="outlined" sx={{ width: '800px', height: '350px', margin: '10px', position:'relative', right:'-400px', backgroundColor: 'rgb(235,237,238)', borderRadius:'50px'}}>
             <DownloadButtonLocation></DownloadButtonLocation>
           </Card>      
         </TabPanel>
+        <br/>
         <TabPanel value={value} index={1}>
         <Card variant="outlined" sx={{ margin: '10px'}}>
           <Charts></Charts>

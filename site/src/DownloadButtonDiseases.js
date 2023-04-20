@@ -11,6 +11,10 @@ import "./styles.css";
 import sign_up from "./DataFunctions.js";
 import * as React from 'react';
 import BasicTabs from './tabs.js';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import Button from '@mui/material/Button';
 
 function getDiseaseList() {
   var countryList = [];
@@ -31,7 +35,7 @@ function getDiseaseList() {
 function createSelectItems(diseaseList) {
   let items = [];
   for (let i = 0; i <= diseaseList.length; i++) {             
-       items.push(<option value={diseaseList[i]}>{diseaseList[i]}</option>)
+       items.push(<MenuItem value={diseaseList[i]}>{diseaseList[i]}</MenuItem>)
   }
   return items;
 }
@@ -107,23 +111,30 @@ export default function DownloadButtonDiseases() {
     <div className="App">
      
       <label>
-
+       <div style={{ fontWeight: 'bold', fontSize:'30px', position:'relative', bottom:'-20px', fontFamily:'helvetica sans-serif' }}>
         Download data filtered by disease
+        </div>
 
-        <select  name="disease" value={value} onChange={handleChange}>
+        {/* <select  name="disease" value={value} onChange={handleChange}> */}
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          name="disease"
+          defaultValue='ansih'
+          value={value}
+          onChange={handleChange}
+          sx = {{fontSize:'25px', position:'relative', bottom:'-80px', width: '500px'}}
+        >
 
           {createSelectItems(getDiseaseList())}
-
-        </select>
+        </Select>
+        {/* </select> */}
 
       </label>
-
-      <div className="btnDiv">
-        <button id="downloadBtn" onClick={downloadTxtFile} value={result}>Download</button>
-      </div>
+      <Button style={{ width:'500px', fontSize:'25px', position:'relative', bottom:'-120px' }} id="downloadBtn" onClick={downloadTxtFile} value={result} variant="contained">Download</Button>
       {downloaded === true
         ? <>
-          <div name='success message' style={{ color: 'green', fontSize: '20px', fontWeight: 'bold' }}>
+           <div name='success message' style={{ position:'relative', bottom: '-200px', color: 'green', fontSize: '20px', fontWeight: 'bold' }}>
             Successfully Downloaded File
           </div>
         </>

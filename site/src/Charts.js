@@ -9,6 +9,10 @@ import { Data1} from './diseasedata';
 import { Bar } from "react-chartjs-2";
 import "./styles.css";
 import * as React from 'react';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import Button from '@mui/material/Button';
+import MenuItem from '@mui/material/MenuItem';
 
 
 function getDiseaseList() {
@@ -30,7 +34,7 @@ function getDiseaseList() {
 function createSelectItems(diseaseList) {
   let items = [];
   for (let i = 0; i <= diseaseList.length; i++) {             
-       items.push(<option value={diseaseList[i]}>{diseaseList[i]}</option>)
+       items.push(<MenuItem value={diseaseList[i]}>{diseaseList[i]}</MenuItem>)
   }
   return items;
 }
@@ -118,16 +122,26 @@ export default function Charts() {
   return (
    
     <div className="App">
-     
       <label>
-
-        Disease
-
-        <select value={value} onChange={handleChange}>
+        <div style={{ fontWeight: 'bold', fontSize:'40px', position:'relative', bottom:'-20px', fontFamily:'helvetica sans-serif' }}>
+          Disease
+        </div>
+        <br/><br/>
+        {/* <select value={value} onChange={handleChange}> */}
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          label="Age"
+          name="disease"
+          defaultValue='ansih'
+          value={value}
+          onChange={handleChange}
+          sx={{width:'500px'}}
+        >
 
           {createSelectItems(getDiseaseList())}
-
-        </select>
+        </Select>
+        <br/><br/>
         <div style={{ maxWidth: "2000px" }}>
         <Bar
           data={xaxis}

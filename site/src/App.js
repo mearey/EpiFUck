@@ -11,13 +11,16 @@ import "./styles.css";
 import sign_up from "./DataFunctions.js";
 import * as React from 'react';
 import BasicTabs from './tabs.js';
+import image from './image.png'
 
 
 function App() {
   
   
   return (
-  <BasicTabs></BasicTabs>
+  <div style={{backgroundImage: `url(${image}`, height:'1000px'}}>
+    <BasicTabs></BasicTabs>
+  </div>
   );
 }
 

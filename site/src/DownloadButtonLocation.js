@@ -11,6 +11,11 @@ import "./styles.css";
 import sign_up from "./DataFunctions.js";
 import * as React from 'react';
 import BasicTabs from './tabs.js';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import Button from '@mui/material/Button';
+import image from './image.png'
 
 
 function getCountryList() {
@@ -29,7 +34,7 @@ function getCountryList() {
 function createSelectItems(countryList) {
   let items = [];
   for (let i = 0; i <= countryList.length; i++) {             
-       items.push(<option value={countryList[i]}>{countryList[i]}</option>)
+       items.push(<MenuItem value={countryList[i]}>{countryList[i]}</MenuItem>)
        //here I will be creating my options dynamically based on
        //what props are currently passed to the parent component
   }
@@ -65,7 +70,6 @@ export default function DownloadButtonLocation() {
 
   const handleChange = (event) => {
     event.preventDefault();
-
     setValue(event.target.value);
     getData(event.target.value)
     .then((r)=> {
@@ -107,23 +111,35 @@ export default function DownloadButtonLocation() {
     <div className="App">
      
       <label>
-
-        Download data filtered by location
-
-        <select  name="disease" value={value} onChange={handleChange}>
-
+        <div style={{ fontWeight: 'bold', fontSize:'30px', position:'relative', bottom:'-20px', fontFamily:'helvetica sans-serif' }}>
+          Download data filtered by location
+        </div>
+        &nbsp; &nbsp;
+        {/* <select  name="disease" value={value} onChange={handleChange}> */}
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          label="Age"
+          name="disease"
+          defaultValue='ansih'
+          value={value}
+          onChange={handleChange}
+          sx = {{fontSize:'25px', position:'relative', bottom:'-80px', width:'500px'}}
+        >
           {createSelectItems(getCountryList())}
+        </Select>
 
-        </select>
+        {/* </select> */}
 
       </label>
 
       <div className="btnDiv">
-        <button id="downloadBtn" onClick={downloadTxtFile} value={result}>Download</button>
+        <Button style={{ width:'500px', fontSize:'25px', position:'relative', bottom:'-120px' }} id="downloadBtn" onClick={downloadTxtFile} value={result} variant="contained">Download</Button>
+        {/* <button style={{ fontSize:'25px', position:'relative', bottom:'-80px' }} id="downloadBtn" onClick={downloadTxtFile} value={result}>Download</button> */}
       </div>
       {downloaded === true
         ? <>
-          <div name='success message' style={{ color: 'green', fontSize: '20px', fontWeight: 'bold' }}>
+          <div name='success message' style={{ position:'relative', bottom: '-140px', color: 'green', fontSize: '20px', fontWeight: 'bold' }}>
             Successfully Downloaded File
           </div>
         </>
