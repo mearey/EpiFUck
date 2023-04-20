@@ -1,17 +1,7 @@
-import logo from './logo.svg';
 import './App.css';
 
-import Chart from "chart.js/auto";
-import { CategoryScale } from "chart.js";
-import { useState } from "react";
-import { Data } from "./Data";
 import { Data1} from './diseasedata';
-import { Bar } from "react-chartjs-2";
-import "./styles.css";
-import sign_up from "./DataFunctions.js";
 import * as React from 'react';
-import BasicTabs from './tabs.js';
-
 
 function getCountryList() {
   var countryList = [];
@@ -42,7 +32,7 @@ async function getData(value) {
       const events = Data1[0]['events'];
       for (var i = 0; i < events.length; i++){
         var item = Data1[0]['events'][i]['attribute'];
-        if (item['location'] == value) {
+        if (item['location'] === value) {
           data.push(item)
         }
       }

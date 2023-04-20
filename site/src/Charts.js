@@ -1,10 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
 
-import Chart from "chart.js/auto";
-import { CategoryScale } from "chart.js";
-import { useState } from "react";
-import { Data } from "./Data";
 import { Data1} from './diseasedata';
 import { Bar } from "react-chartjs-2";
 import "./styles.css";
@@ -42,7 +37,7 @@ async function getData(value) {
       const events = Data1[0]['events'];
       for (var i = 0; i < events.length; i++){
         var item = Data1[0]['events'][i]['attribute'];
-        if (item['disease'] == value) {
+        if (item['disease'] === value) {
           if (!countryList.includes(item['location'])) {
             countryList.push(item['location'])
             countryNumbers.push(1);
@@ -58,11 +53,6 @@ async function getData(value) {
 export default function Charts() {
 
   const [value, setValue] = React.useState('covid19');
-  var thing;
-  getData('covid19')
-  .then(r=>{
-    thing = r
-  })
 
   const [xaxis, setx] = React.useState(
     {
